@@ -11,11 +11,33 @@ var milesToMars = (kilometersToMars * milesPerKilometer);
 var hoursToMars = (milesToMars / speedMph);
 var daysToMars = (hoursToMars / 24);
 // Code an output statement here (use a template literal):
-console.log("".concat(spacecraftName, " would take ").concat(daysToMars, " to get to Mars."));
 // Part 3: Create a Function ("getDaysToLocation")
+// function getDaysToLocation(kilometersAway: number): number {
+//     let milesAway: number = kilometersAway*milesPerKilometer;
+//     let hours: number = milesAway / speedMph;
+//     return hours / 24;
+// }
 // Move your output statement from part 2 here. Update the template literal to call
 // the function and print the outputs for a Mars trip and a moon trip.
+// console.log(`${spacecraftName} would take ${getDaysToLocation(kilometersToMars)} to get to Mars.`);
+// console.log(`${spacecraftName} would take ${getDaysToLocation(kilometersToTheMoon)} to get to the moon.`);
 // Part 4: Create a Spacecraft Class
+var Spacecraft = /** @class */ (function () {
+    function Spacecraft(name, speedMph) {
+        this.milesPerKilometer = 0.621;
+        this.name = name;
+        this.speedMph = speedMph;
+    }
+    Spacecraft.prototype.getDaysToLocation = function (kilometersAway) {
+        var milesAway = kilometersAway * this.milesPerKilometer;
+        var hours = milesAway / this.speedMph;
+        return hours / 24;
+    };
+    return Spacecraft;
+}());
+var spaceShuttle = new Spacecraft('Determination', 17500);
+console.log("".concat(spaceShuttle.name, " would take ").concat(spaceShuttle.getDaysToLocation(kilometersToMars), " to get to Mars."));
+console.log("".concat(spaceShuttle.name, " would take ").concat(spaceShuttle.getDaysToLocation(kilometersToTheMoon), " to get to the Moon."));
 // Create an instance of the class here:
 // Move your output statements from part 3 here. Update the template literals use the
 // instance of the class.
