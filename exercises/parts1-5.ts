@@ -1,6 +1,7 @@
 // URL for the instructions: 
 // https://education.launchcode.org/intro-to-professional-web-dev/chapters/typescript/exercises.html 
 
+import { SpaceLocation } from './SpaceLocation';
 // Part 1: Declare (5) Variables With Type
 let spacecraftName: string = 'Determination';
 let speedMph: number = 17500;
@@ -42,13 +43,18 @@ class Spacecraft {
         let milesAway: number = kilometersAway * this.milesPerKilometer;
         let hours: number = milesAway / this.speedMph;
         return hours / 24;
-    }}
+    }
+    printDaysToLocation(location: SpaceLocation) {
+        console.log(`${this.name} would take ${this.getDaysToLocation(location.kilometersAway)} days to get to ${location.name}.`);
+     }}
 let spaceShuttle = new Spacecraft('Determination', 17500);
 
-console.log(`${spaceShuttle.name} would take ${spaceShuttle.getDaysToLocation(kilometersToMars)} to get to Mars.`)
+// console.log(`${spaceShuttle.name} would take ${spaceShuttle.getDaysToLocation(kilometersToMars)} to get to Mars.`)
 
-console.log(`${spaceShuttle.name} would take ${spaceShuttle.getDaysToLocation(kilometersToTheMoon)} to get to the Moon.`)
+// console.log(`${spaceShuttle.name} would take ${spaceShuttle.getDaysToLocation(kilometersToTheMoon)} to get to the Moon.`)
+spaceShuttle.printDaysToLocation(new SpaceLocation('Mars', kilometersToMars));
 
+spaceShuttle.printDaysToLocation(new SpaceLocation('the Moon', kilometersToTheMoon));
 
 
 // Create an instance of the class here:

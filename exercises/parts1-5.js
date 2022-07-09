@@ -1,5 +1,8 @@
+"use strict";
 // URL for the instructions: 
 // https://education.launchcode.org/intro-to-professional-web-dev/chapters/typescript/exercises.html 
+exports.__esModule = true;
+var SpaceLocation_1 = require("./SpaceLocation");
 // Part 1: Declare (5) Variables With Type
 var spacecraftName = 'Determination';
 var speedMph = 17500;
@@ -33,11 +36,16 @@ var Spacecraft = /** @class */ (function () {
         var hours = milesAway / this.speedMph;
         return hours / 24;
     };
+    Spacecraft.prototype.printDaysToLocation = function (location) {
+        console.log("".concat(this.name, " would take ").concat(this.getDaysToLocation(location.kilometersAway), " days to get to ").concat(location.name, "."));
+    };
     return Spacecraft;
 }());
 var spaceShuttle = new Spacecraft('Determination', 17500);
-console.log("".concat(spaceShuttle.name, " would take ").concat(spaceShuttle.getDaysToLocation(kilometersToMars), " to get to Mars."));
-console.log("".concat(spaceShuttle.name, " would take ").concat(spaceShuttle.getDaysToLocation(kilometersToTheMoon), " to get to the Moon."));
+// console.log(`${spaceShuttle.name} would take ${spaceShuttle.getDaysToLocation(kilometersToMars)} to get to Mars.`)
+// console.log(`${spaceShuttle.name} would take ${spaceShuttle.getDaysToLocation(kilometersToTheMoon)} to get to the Moon.`)
+spaceShuttle.printDaysToLocation(new SpaceLocation_1.SpaceLocation('Mars', kilometersToMars));
+spaceShuttle.printDaysToLocation(new SpaceLocation_1.SpaceLocation('the Moon', kilometersToTheMoon));
 // Create an instance of the class here:
 // Move your output statements from part 3 here. Update the template literals use the
 // instance of the class.
